@@ -1,0 +1,306 @@
+* { /*seletor universal padronizando coisas essenciais da página, dando um reset básico no CSS padrão*/
+  margin:0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body { /*cor do corpor inteiro da página, pega a tela toda, lado a lado, cima a baixo*/
+  background: #BFD7E4;
+}
+
+body::before {/*criando um elemento via CSS para ficar antes do body*/
+  content: ''; /*gerando o elemento, que não é nda na verdade, só quero sua caixa para usar suas bordas e background*/
+  width: 100%; /*ele é de lado a lado conforme layout*/
+  height: 465px; /*sua altura no layout*/
+
+  position: absolute; /*posição absoluta para ficar na tela, isto é, fora da página, em uma folha sobreposta*/
+  top:0; /*sempre bom começar desse ponto de partida para depois esticar o elemento*/
+  left:0; /*sempre bom começar desse ponto de partida para depois esticar o elemento*/
+  z-index: -1; /*destravado pelo positio propriedade para inverter a sobreposição e colocar este elemento para baixo em profundidade*/
+ 
+  background: #293241;
+}
+
+/*Muito importante ser feita essa div sempre para ajudar na padronização e encaixe da página no navegador*/
+.page { /*largura de acordo com o tamanho que o layout definiou para o formulário e centralização deste também*/
+  width: 750px;
+  margin: 0 auto;
+}
+
+header { /*centralizando e colocando seu muito importante espaçamento do topo da página*/
+  text-align: center;
+  margin-top: 107px;
+}
+header h1 { /*estilizando o título do header*/
+  font-family: 'Staatliches', cursive;
+  font-weight: 400;
+  font-size: 36px;
+  line-height: 45px;
+
+  color: #FFFFFF;
+
+  margin-bottom: 10px; /*espaçando a tag h1 para a tag p*/
+}
+
+header p { /*estilizando o parágrafo do header*/
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+
+  color: #FFFFFF;
+
+  margin-bottom: 20px; /*espaçando o parágrafo da imagem*/
+}
+
+img { /*espaçando a imagem do form conforme layoout*/
+  margin-bottom: 32px;
+}
+
+#top { /*id criado para um parágrafo que representa o legend1(vazio) corresponder ao layout que lhe caracterizava fora do form*/
+  font-family:'Staatliches', cursive;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 34px;
+ 
+  color: #FFFFFF;
+
+  width: 750px;
+  height: 133px;
+  
+  background: #F67669;
+  border-radius: 20px 20px 0 0;
+  padding: 50px 275px;
+  margin-bottom: 0;
+}
+
+form { /*O form engoba todos os fieldset, não padronizei os espaços entre os fieldsets aqui com gap, pois pelo layout eram todos diferentes*/
+  background: #FFFFFF;
+  border-radius: 0px 0px 20px 20px;
+  min-height: 300px;
+
+  padding: 41px 64px 64px 64px;
+
+  display: flex;
+  flex-direction: column;
+  /*gap:35px*/
+}
+
+fieldset { /*tirando as linhas pretas do navegador*/
+  border: none;
+}
+
+/*colocando os campos um abaixo do outro, sem gap, pois tiveram que ser feitos separados, invólucros dos campos de entrada*/
+.fieldset-wrapper-1, .fieldset-wrapper-2, .fieldset-wrapper-3 { 
+  display: flex;
+  flex-direction: column;
+}
+.fieldset-wrapper-1 {
+  gap: 16px;
+}
+
+.fieldset-wrapper-1 .col-2 { /*Fazendo com que os invólucros do Campo 1, da classe col-2 fiquem um ao lado do outro e tenham o espaçamento do layout */
+  display: flex;
+  gap:22px;
+}
+
+/*Mexendo com as filhas diretas da div col-2, feitas para colocar nome e sobrenome ao lado e com certa largura*/
+.col-2 > div:nth-child(1), 
+.col-2 > div:last-child {
+  width: 100%; /*essa largura faz elas preencherem o tamanho disponível da página toda, ambas. Se fosse 50% ambas ficariam em 50%, sobraria 50% de vazio ao lado.*/
+}
+
+.fieldset-wrapper-2 {
+  gap: 31px;
+}
+
+.fieldset-wrapper-3 .col-3 {/*mesmo raciocínio do col-2*/
+  display: flex;
+}
+
+.col-3 > div:nth-child(1) {/*mesmo raciocínio do col-2*/
+  width: 100%;
+  margin-right: 32px;
+}
+
+.col-3 > div:nth-child(2) {/*mesmo raciocínio do col-2*/
+  margin-right: 10px;
+}
+
+fieldset legend { /*estilizando todos os títulos dos três Campos*/
+  font-family: 'Staatliches', cursive;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 34px;
+
+  text-align: center;
+
+  padding: 8px auto;
+
+  color: #253B51;
+
+  border-bottom: 1px solid #E6E6F0;
+  margin-bottom: 33px;
+}
+
+/*Sumindo com o primeiro Legend. Pelo layout tivemos que fazê-lo como parágrafo no cabeçalho.Ele é o id Top. */
+#no-border-legend-1 { 
+  border:0;
+  padding:0;
+  margin:0;
+}
+
+/*Precisei separar a classe fieldset, em 1, 2, 3)*/
+/*Pelo Layout os espaçamentos entre os campos eram todos diferentes! Não deu para fazer tudo em um GAP só.*/
+#fieldset-1 { 
+  margin-bottom: 32px;
+}
+
+#fieldset-2 {
+  margin-bottom: 36px;
+}
+
+.input-wrapper { /*colocando os invólucros de todos os inputs em coluna*/
+  display: flex;
+  flex-direction: column;
+}
+
+.input-wrapper label,
+.checkbox-wrapper label { /*estilizando as etiquetas de todos os inputs e do checkbox*/
+  font-family: 'Poppins', sans-serif; 
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+
+  color: #4E4958;
+
+  margin-bottom: 8px;
+}
+
+.input-wrapper label span {/*padronizando os spans ao lado de algumas etiquetas*/
+  font-size: 12px;
+  line-height: 20px;
+
+  color: #C1BCCC;
+
+  margin-left: 9px;
+}
+
+.input-wrapper label span:hover {/*deixando a tetra mais escura para a acessibilidade, pois a clara não estava passsando no teste do devtools*/
+  color: #6c6a71; 
+}
+
+/*estilizando os campos do formulário, que são diferentes por isso estão especificados*/
+.input-wrapper input,
+.input-wrapper textarea,
+.input-wrapper select {
+  background: #FAFAFC;
+
+  border: 1px solid #E6E6F0;
+  border-radius: 8px;
+
+  height: 56px;
+
+  padding: 0 24px; /*espaço para o que for digitado pelo usuário não ficar colcado na borda do input, e o que mais vier ali dentro*/
+
+  font-size: 16px;
+  line-height: 26px;
+
+  color: #6c6a71; 
+}
+
+/*retirando a seta so select (o seletor, posso tirar para colocar outro, ou apenas sumir com ele.)*/
+.input-wrapper select { /*sempre verificar no site Can I? se precisa de um prefixo para usar essas propriedades mais diferentes*/
+  width: 50%;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.input-wrapper textarea { /*colocando as dimensões específicas da textarea*/
+  height: 167px;
+  padding: 0;
+}
+
+.checkbox-wrapper label::before { /*criando um conteúdo antes da labelpara ser minha caixa de input estilizada conforme layout*/
+  content: '';
+  width: 24px;
+  height: 24px;
+  background: #FAFAFC;
+  border: 1px solid #E6E6F0;
+  border-radius: 8px;
+}
+
+.checkbox-wrapper { /*posição relativa pois ele engloba o input do checkbox qque agora será absoluto em relação a ele, para não sair perdido na página*/
+  position: relative;
+}
+
+.checkbox-wrapper label { /*está tudo na label tanto a etiqueta quanto a caixa, estilizei o content por aqui com a label*/
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 0;
+ 
+}
+
+.checkbox-wrapper input { /*sumir com ele, através do 'display:none;' gera problema de acessibilidade e navegação com o TAB e para o leitor de tela. Daí solução é opacity.*/
+  position:absolute;
+
+  top:0;
+  left: 0;
+  opacity: 0;
+}
+
+footer {
+  padding: 0; /*neste caso não preciso espaçar meu botão do footer, pois o footer nem aparece, são do mesmo tamanho*/
+  margin-top: 64px;
+  margin-bottom: 0;
+}
+
+.button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+  padding: 12px; /*centralizando o conteúdo salvar do bitão cima/baixo*/
+
+  height: 56px;
+  width:100%; /*fazendo o botão esticar para os lados 100% do footer*/
+
+  background: #F67669;
+  border-radius: 8px;
+  
+  border: 0; /*retirando a borda padrão preta que vem no btn no navegador*/
+
+  font-family: 'Staatliches';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 26px;
+
+  color: #FFFFFF;
+  cursor: pointer;
+}
+
+.button:hover { /* Alterando cor de findo quando mouse estiver por cima do botão, detalhe estético*/
+  background: #a24141;
+}
+
+/*estilo especial para quando tenatrem enviar o form sem campo obrigatório preenchido. Basta colocar o atributo REQUIRED no input do HTML.*/
+input:invalid { /*PSEUDO CLASSE do tipo inválido, serve pra ver o estado do seu elemento */
+  border: 1px solid #FF1010
+}
+
+.checkbox-wrapper input:checked + label::before{
+  background-image: url("data:image/svg+xml,%3Csvg width='26' height='26' viewBox='0 0 26 26' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='1' y='1' width='24' height='24' rx='8' fill='%23FAFAFC' stroke='%23E6E6F0'/%3E%3Cpath d='M10 17.17L5.83 13L4.41 14.41L10 20L22 8L20.59 6.59L10 17.17Z' fill='%2342D3FF'/%3E%3C/svg%3E%0A");
+  /*click botão direito na imagem dsejada -> copy/past -> copy as SVG -> base64*/
+}
+
+/*Quando o input desse .checkbox-wrapper estiver em foco (usando aqui a pseudoclasse :focus),
+verifica se está em foco e se tiver pego o 'label::before' e crio o outline, sublinhado, envolto. Assim coloco este
+input estilizado em foco quando o TAB estiver nele.*/
+.checkbox-wrapper input:focus + label::before {
+  outline: 2px solid black;
+}
+
+
+/*FIGMA: https://www.figma.com/file/erOuDsf0CHnYNni87B4grr/Stage-03---Formul%C3%A1rio-avan%C3%A7ado-(Copy)?node-id=0%3A1*/
